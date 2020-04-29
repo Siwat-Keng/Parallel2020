@@ -18,7 +18,7 @@ class LoginPage extends Component {
     return (
       <div className="Login-Page">
         <div className="Field-Container">
-          <h1 className="enterText">Line 4.0</h1>
+          <h1 className="enterText">Project on Fire!</h1>
           <br />
           <form onSubmit={this.submitHandler}>
             <TextField 
