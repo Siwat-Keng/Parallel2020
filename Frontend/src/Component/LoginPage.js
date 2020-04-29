@@ -18,42 +18,43 @@ class LoginPage extends Component {
  */
   render() {
     return (
-      <div className="Login-Page">
-        <div className="Field-Container">
-          <h1 className="enterText">Enter Your Name</h1>
-          <br />
-          <form onSubmit={this.submitHandler}>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Enter name here ..."
-              id="nameField"
-              onChange={e => {
-                this.props.updateUsername(e.target.value);
-              }}
-            />
-          </form>
-          {this.props.username.trim().length > 0 ? (
+      <div className="Login-Page">        
+          <div className="Field-Container">
+            <h1 className="enterText">Ohm and his friends</h1>
             <br />
-          ) : (
-            <pre className="blankAlert"> Please fill out this field.</pre>
-          )}
-          <div>
-            <NavLink to="/ChatRoom">
-              <button
-                disabled={!this.props.username.trim().length > 0}
-                className="btn btn-primary"
-                type="submit"
-                onClick={e => {
-                  this.props.updateCurrentPage("Chat");
-                  this.props.SocketEmit('enter',this.props.username)
+            <form onSubmit={this.submitHandler}>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Fill your name here ..."
+                id="nameField"
+                onChange={e => {
+                  this.props.updateUsername(e.target.value);
                 }}
-              >
-                Enter
-              </button>
-            </NavLink>
+              />
+            </form>
+            {this.props.username.trim().length > 0 ? (
+              <br />
+            ) : (
+              <pre className="blankAlert"> Don't leave your name blank.</pre>
+            )}
+            <div>
+              <NavLink to="/ChatRoom">
+                <button
+                  disabled={!this.props.username.trim().length > 0}
+                  className="btn btn-success"
+                  type="submit"
+                  onClick={e => {
+                    this.props.updateCurrentPage("Chat");
+                    this.props.SocketEmit('enter',this.props.username)
+                  }}
+                >
+                  Login
+                  
+                </button>
+              </NavLink>
+            </div>
           </div>
-        </div>
       </div>
     );
   }
