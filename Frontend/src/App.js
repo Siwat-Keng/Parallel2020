@@ -27,18 +27,12 @@ class App extends Component {
     const me = this;
     
     this.socket.on('updateAllChats',function(data) { // Have setstate
-      console.log('Received [updateAllChats] event!')
-      console.log(data)
       me.setState({...me.state, allChats:data});
-      console.log(me.state)
     })
     this.socket.on('updateIsJoined', function(data){ // Have setState
-      console.log('Received [updateIsJoin] event')
       me.setState({...me.state, groupList:data.groupList, isJoinGroupList:data.isJoinGroupList })
-      console.log(me.state)
     })
     this.socket.on('notifyNewGroup',function(data){ // event after create group, getAllchats is broadcast after create group too
-      console.log('Received [notifyNewGroup] event')
       me.socket.emit('getUpdateIsjoin',me.state.username) // 
     })
     this.SocketEmit = this.SocketEmit.bind(this);
@@ -92,7 +86,6 @@ class App extends Component {
     this.setState({
       myRequestedRefs: childRef
     });
-    console.log(this.state.myRequestedRefs);
   }
 
   //------ north add ja -----//
@@ -108,22 +101,7 @@ class App extends Component {
       text: ReactDOM.findDOMNode(this.state.myRequestedRefsChat.msg).value,
       timestamp: Date()
     };
-    console.log("messagekub");
-    console.log(messagekub);
     this.socket.emit('sendMessage',messagekub);
-    // let tmp = Object.assign({}, this.state.allChats); //creating copy of object
-    // tmp[this.state.currentGroup] = this.state.allChats[
-    //   this.state.currentGroup
-    // ].concat([
-    //   {
-    //     username: this.state.username,
-    //     content: <p>{ReactDOM.findDOMNode(this.state.myRequestedRefsChat.msg).value}</p>,
-    //     timeStamp: "23:59"
-    //   }
-    // ]);
-    // this.setState({
-    //   allChats: tmp
-    // });
     ReactDOM.findDOMNode(this.state.myRequestedRefsChat.msg).value = "";
     this.userInput("");
   }
@@ -136,7 +114,6 @@ class App extends Component {
     this.setState({
       myRequestedRefsChat: chatRef
     });
-    console.log(this.state.myRequestedRefs);
   }
 
   render() {
