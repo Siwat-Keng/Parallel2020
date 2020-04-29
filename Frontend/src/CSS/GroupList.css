@@ -1,0 +1,73 @@
+.groupList-container {
+  width: 32%;
+  float: left;
+}
+
+.form-group {
+  width: calc(100% - 38px);
+}
+
+.addLabel {
+  width: 100%;
+}
+
+#groupItem {
+  width: 100%;
+  padding: 5px;
+  border-top-right-radius: 0rem;
+  border-bottom-right-radius: 0rem;
+}
+#addButton {
+  border-top-left-radius: 0rem;
+  border-bottom-left-radius: 0rem;
+  width: 38px;
+}
+#StatusButton {
+  width: 66px;
+  height: 49px;
+}
+#eachGroupItem {
+  height: 49px;
+  float: left;
+  width: calc(100% - 66px);
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  border-top-right-radius: 0rem;
+  border-bottom-right-radius: 0rem;
+}
+
+.leave {
+  width: 66px;
+  height: 49px;
+  float: right;
+  background-color: #fd5757;
+  border-radius: 15%;
+  color:white;
+  font-weight: bold;
+}
+.leave:hover {
+  background-color: #c11f2a;
+}
+.join {
+  width: 66px;
+  height: 49px;
+  float: right;
+  background-color: #3dc63b;
+  border-radius: 15%;
+  color:white;
+  font-weight: bold;
+}
+.join:hover {
+  background-color: #217020;
+}
+#eachGroupItem:hover {
+  background: #0fc5f3;
+  color: #fff;
+}
+
+.btn-sm {
+  width: 30%;
+  height: 38px;
+  padding: 10px;
+  
+}
