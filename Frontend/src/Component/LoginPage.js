@@ -18,7 +18,7 @@ class LoginPage extends Component {
     return (
       <div className="Login-Page">
         <div className="Field-Container">
-          <h1 className="enterText">Project on Fire!</h1>
+          <h1 className="enterText">Ohm and his friends</h1>
           <br />
           <form onSubmit={this.submitHandler}>
             <TextField 
@@ -43,12 +43,12 @@ class LoginPage extends Component {
                 this.props.SocketEmit('enter',this.props.username)
               }}
               >
-                Enter
+                Login
               </Button>
             </NavLink>
           </div>
-        </div>
       </div>
+    </div>
     );
   }
 }
