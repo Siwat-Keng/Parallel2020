@@ -23,7 +23,6 @@ class App extends Component {
     };
     // Socket Things --------------------------------
     this.socket = openSocket('http://localhost:8000');
-    console.log('A socket created [App.js]')
     const me = this;
     
     this.socket.on('updateAllChats',function(data) { // Have setstate
@@ -88,7 +87,6 @@ class App extends Component {
     });
   }
 
-  //------ north add ja -----//
   updateIsJoinGroupList(newList){
     this.setState({isJoinGroupList:newList});
   }

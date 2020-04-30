@@ -29,26 +29,22 @@ function userEnter(data,socket) { //data = username "Dongglue"}
 }
 
 function EmitGroupInfo(username,socket){
-
   var groupListkub = [] ;
   Group.find({},function(err,data){
     data.forEach(function(element) { 
       groupListkub.push(element.name);
     })
-    var isJoinGroupListkub = [];
+    var isJoinGroupListkub = new Array(groupListkub.length);
+    isJoinGroupListkub.fill(false)
     let k = 0;      
     groupListkub.forEach(function(element){
       JoinedGroupInfo.find({username:username,groupname:element},function(err,data){
-        if (data.length == 0) {
-          isJoinGroupListkub.push(false);
-        } else {
-          isJoinGroupListkub.push(true);
+        if (data.length > 0) {
+          isJoinGroupListkub[groupListkub.indexOf(element)] = true
         }
         k += 1; 
         if(k==groupListkub.length){
           socket.emit("updateIsJoined",{groupList:groupListkub, isJoinGroupList:isJoinGroupListkub});
-          console.log({groupList:groupListkub, isJoinGroupList:isJoinGroupListkub})
-          console.log('emit groupListSomething lew!')
         }
       })
     })
