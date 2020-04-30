@@ -48,6 +48,7 @@ class GroupList extends Component {
                   className="list-group-item list-group-item-info"
                   id="eachGroupItem"
                   onClick={e => {
+                    console.log(listvalue)
                     this.props.updateCurrentGroup(listvalue);
                   }}
                 >
@@ -61,9 +62,8 @@ class GroupList extends Component {
                     var tmp = e.target.value.split("_");
                     if(tmp[0] === "leave") {
                       this.props.SocketEmit('leaveGroup',{username:this.props.username,groupname:tmp[1]})
-                      this.props.updateCurrentGroup("Not in group.")
                     } else if (tmp[0] === "join"){
-                      this.props.SocketEmit('joinGroup',{username:this.props.username,groupname:tmp[1]})  
+                      this.props.SocketEmit('joinGroup',{username:this.props.username,groupname:tmp[1]})
                       this.props.updateCurrentGroup(tmp[1])
                     }
                   }}
