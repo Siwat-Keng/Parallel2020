@@ -86,6 +86,8 @@ function BroadcastAllChats(socket){
       allChat.push(data.name);
     })
     let j = 0;
+    console.log(allChat)
+    console.log(allChats)
     allChat.forEach(function(data){
       Message.find({groupName:data}).sort('timestamp').exec(function(err,msg){
         allChats[data] = msg.map(function(item,index){
