@@ -21,6 +21,8 @@
   height: 65px;
   width: 30vw;
   padding: 17px;
+  font-family:"Comic Sans MS", cursive;
+
 }
 .avatar {
   float: left;
@@ -35,6 +37,7 @@
   border: none;
   font-size: 16px;
   padding: 10px;
+  font-family:"Comic Sans MS", cursive;
 }
 .send-message-form button {
   display: none;
@@ -43,7 +46,7 @@
 .navbar {
   height: 10vh;
   overflow: hidden;
-  background-color: rgb(182, 220, 241);
+  background-color: #00ab0b;
 }
 
 .navbar a {
@@ -52,4 +55,5 @@
   color: white;
   text-align: center;
   text-decoration: none;
+  font-family: "Comic Sans MS", cursive;
 }

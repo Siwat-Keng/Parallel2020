@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "../CSS/LoginPage.css";
 import { NavLink } from "react-router-dom";
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 class LoginPage extends Component {
   constructor() {
@@ -12,49 +14,41 @@ class LoginPage extends Component {
       this.props.updateCurrentPage("Chat");
     else return false;
   }
-/** ****Notes***** If account name exist and no-one login with that account. -- Get stage from --
- * If account name not exist in DB --Create new isJoinGroupList with all element false. --
- * If account name exist but someone login with that name -- Reject new login with that name. --
- */
   render() {
     return (
       <div className="Login-Page">
         <div className="Field-Container">
-          <h1 className="enterText">Enter Your Name</h1>
+          <h1 className="enterText">Ohm and his friends</h1>
           <br />
           <form onSubmit={this.submitHandler}>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Enter name here ..."
-              id="nameField"
-              onChange={e => {
-                this.props.updateUsername(e.target.value);
-              }}
+            <TextField 
+            id="nameField"
+            label="Enter name here" 
+            variant="filled" 
+            error={this.props.username.trim().length > 0}
+            helperText={this.props.username.trim().length > 0?'':'Name cannot be empty.'}            
+            onChange={e => {
+              this.props.updateUsername(e.target.value);
+            }}
             />
           </form>
-          {this.props.username.trim().length > 0 ? (
-            <br />
-          ) : (
-            <pre className="blankAlert"> Please fill out this field.</pre>
-          )}
+          <br />
           <div>
             <NavLink to="/ChatRoom">
-              <button
-                disabled={!this.props.username.trim().length > 0}
-                className="btn btn-primary"
-                type="submit"
-                onClick={e => {
-                  this.props.updateCurrentPage("Chat");
-                  this.props.SocketEmit('enter',this.props.username)
-                }}
+              <Button
+              disabled={!this.props.username.trim().length > 0}
+              variant="contained"
+              onClick={e => {
+                this.props.updateCurrentPage("Chat");
+                this.props.SocketEmit('enter',this.props.username)
+              }}
               >
-                Enter
-              </button>
+                Login
+              </Button>
             </NavLink>
           </div>
-        </div>
       </div>
+    </div>
     );
   }
 }
