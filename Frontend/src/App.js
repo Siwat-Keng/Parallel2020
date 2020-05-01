@@ -16,26 +16,25 @@ class App extends Component {
       currentPage: "Login",
       username: "",
       currentGroup: "Not in group.",
-      isJoinGroupList: [], // [true, false, true],
-      groupList: [], //["Group1", "Group2", "Group3"],
-      allChats: { // If want dummy ,GO copy from past it's too long
+      isJoinGroupList: [],
+      groupList: [],
+      allChats: {
       }
     };
-    // Socket Things --------------------------------
+
     this.socket = openSocket('http://localhost:8000');
     const me = this;
     
-    this.socket.on('updateAllChats',function(data) { // Have setstate
+    this.socket.on('updateAllChats',function(data) {
       me.setState({...me.state, allChats:data});
     })
-    this.socket.on('updateIsJoined', function(data){ // Have setState
+    this.socket.on('updateIsJoined', function(data){
       me.setState({...me.state, groupList:data.groupList, isJoinGroupList:data.isJoinGroupList })
     })
-    this.socket.on('notifyNewGroup',function(data){ // event after create group, getAllchats is broadcast after create group too
-      me.socket.emit('getUpdateIsjoin',me.state.username) // 
+    this.socket.on('notifyNewGroup',function(data){
+      me.socket.emit('getUpdateIsjoin',me.state.username)
     })
     this.SocketEmit = this.SocketEmit.bind(this);
-    // End Socket Things ----------------------------
     
     this.updateUsername = this.updateUsername.bind(this);
     this.updateCurrentPage = this.updateCurrentPage.bind(this);
@@ -52,7 +51,7 @@ class App extends Component {
   SocketEmit(event,value){
     this.socket.emit(event,value);
   }
-  //--------------------Login-----------------------
+
   updateUsername(value) {
     this.setState({
       username: value
@@ -64,7 +63,6 @@ class App extends Component {
     });
   }
 
-  //------------------GroupList---------------------
   updateCurrentGroup(value) {
     this.setState({
       currentGroup: value
@@ -91,7 +89,6 @@ class App extends Component {
     this.setState({isJoinGroupList:newList});
   }
 
-  //---------------------ChatPanel------------------------
   submitMessage(e) {
     e.preventDefault();
     var messagekub = {  userName: this.state.username,

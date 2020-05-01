@@ -3,7 +3,7 @@ import React from "react";
 const Message = ({ chat, user }) => (
   <li className={`chat ${user === chat.username ? "right" : "left"}`}>
     <span className="profile">
-      <img className={`${user === chat.username ? "right" : "left"}`} src={"https://api.adorable.io/avatars/200/" + chat.username + ".png"} alt="Avatar"/>
+      <img className={`${user === chat.username ? "right" : "left"}`} src={"https://avatars.dicebear.com/v2/male/"+chat.username+".svg"} alt="Avatar"/>
       <div className={`chatname ${user === chat.username ? "right" : "left"}`}>
         {chat.username}
       </div>

@@ -26,7 +26,7 @@
   margin-bottom: 10px;
   min-width: 100px;
   max-width: 57.5%;
-  
+  font-family: "Montserrat";
   height: auto;
   word-break: break-all;
   text-overflow: ellipsis;
@@ -95,6 +95,7 @@ img.left{
   width: 88%;
   box-sizing: border-box;
   font-size: 14px;
+  font-family: "Montserrat";
 }
 
 #submitButton {

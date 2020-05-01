@@ -7,8 +7,8 @@ class NavigationBar extends Component {
     return (
       <div>
         <div className="navbar">
-          <p>Welcome: {this.props.username}</p>
-          <p>Group Name: {this.props.currentGroup}</p>
+          <p>Current User: {this.props.username}</p>
+          <p>Current Group: {this.props.currentGroup}</p>
           <NavLink to="/">
             <button className="btn btn-danger"
               onClick={e => {
