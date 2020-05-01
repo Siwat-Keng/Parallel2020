@@ -25,7 +25,7 @@ class GroupList extends Component {
               <input
                 type="text"
                 id="groupItem"
-                placeholder="Type New Group Name Here"
+                placeholder="Create New Group Here"
                 ref="groupName"
                 className="form-control"
               />
@@ -48,7 +48,6 @@ class GroupList extends Component {
                   className="list-group-item list-group-item-info"
                   id="eachGroupItem"
                   onClick={e => {
-                    console.log(listvalue)
                     this.props.updateCurrentGroup(listvalue);
                   }}
                 >
