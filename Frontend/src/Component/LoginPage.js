@@ -26,7 +26,7 @@ class LoginPage extends Component {
             label="Enter name here" 
             variant="filled" 
             error={this.props.username.trim().length > 0}
-            helperText={this.props.username.trim().length > 0?'':'Name cannot be empty.'}            
+            helperText={this.props.username.trim().length > 0?'':'Do not let your name blank.'}            
             onChange={e => {
               this.props.updateUsername(e.target.value);
             }}

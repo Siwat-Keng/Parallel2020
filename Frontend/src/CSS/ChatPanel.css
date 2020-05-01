@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 .chat-container {
   width: 68%;
   background-color: #2F2F2F;
@@ -26,7 +28,7 @@
   margin-bottom: 10px;
   min-width: 100px;
   max-width: 57.5%;
-  font-family: "Montserrat";
+  font-family: Arial, Helvetica, sans-serif;
   height: auto;
   word-break: break-all;
   text-overflow: ellipsis;
@@ -95,7 +97,7 @@ img.left{
   width: 88%;
   box-sizing: border-box;
   font-size: 14px;
-  font-family: "Montserrat";
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #submitButton {
