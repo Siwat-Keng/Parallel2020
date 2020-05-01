@@ -61,7 +61,7 @@ class ChatPanel extends Component {
                   id="submitButton"
                   disabled={!this.props.typeText.trim().length > 0}
                 >
-                  <i className="fa fa-paper-plane" id="plane" aria-hidden="true" />
+                  Send
                 </button>
               </form>
             </div>

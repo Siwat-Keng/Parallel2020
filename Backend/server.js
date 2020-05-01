@@ -9,17 +9,15 @@ const JoinedGroupInfo = require('./models/groupjoinedinfo');
 const Message = require('./models/message');
 
 // DB ---------------------------------------------------------------------------
-mongoose.connect('mongodb+srv://testds:@123456789@cluster0-4tpcn.mongodb.net/test',{ useNewUrlParser: true }); // test =  database name
+mongoose.connect('mongodb+srv://testds:@123456789@cluster0-4tpcn.mongodb.net/test',{ useNewUrlParser: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => { console.log('DB connected!')});
 
-function userEnter(data,socket) { //data = username "Dongglue"}
+function userEnter(data,socket) {
   User.find({name:data},function(err,users){
     if(err) {console.log(err);}
-    // TODO [DB] : Create user if not existed
-    if(!users.length) { // user == [] อันนี้เขียนๆไปก่อน ไม่รู้ js เช๊คไง
-      console.log('>>> Create New User na')
+    if(!users.length) {
       var newUser = new User({name:data});
       newUser.save();
     }
@@ -82,8 +80,6 @@ function BroadcastAllChats(socket){
       allChat.push(data.name);
     })
     let j = 0;
-    console.log(allChat)
-    console.log(allChats)
     allChat.forEach(function(data){
       Message.find({groupName:data}).sort('timestamp').exec(function(err,msg){
         allChats[data] = msg.map(function(item,index){
@@ -100,19 +96,18 @@ function BroadcastAllChats(socket){
 
 io.on('connection', function (socket) {
 
-  // After click enter button , data = username 
   socket.on('enter', function (data) {
     userEnter(data,socket);
   });
   
-  socket.on('sendMessage', function(data){ // data = {userName,GroupName,timestamp,text}
+  socket.on('sendMessage', function(data){
     var newMessage = new Message(data)
     newMessage.save(function(err){
       if (err) {return err;}
       BroadcastAllChats(socket);
     }); 
   })
-  socket.on('joinGroup', function(data){ //data = {username:'dongglue',groupname:'3L'}
+  socket.on('joinGroup', function(data){
       var joinNewGroup = new JoinedGroupInfo({username:data.username,groupname:data.groupname})
       joinNewGroup.save(function(err){
         if (err) {return err;}
@@ -121,7 +116,7 @@ io.on('connection', function (socket) {
       
     })
     
-  socket.on('leaveGroup', function(data){//data = {username:'dongglue',groupname:'3L'}
+  socket.on('leaveGroup', function(data){
       JoinedGroupInfo.deleteMany(data,function(err){
         if (err) {return err;}
         EmitGroupInfo(data.username,socket);
@@ -129,7 +124,7 @@ io.on('connection', function (socket) {
       
     })
   
-  socket.on('createGroup', function(data){ //data = {username:'dongglue',groupname:'3L'}
+  socket.on('createGroup', function(data){
       new Group({name:data.groupname}).save(function(err){
         if (err) {return err;}   
         io.emit('notifyNewGroup',"eiei")
@@ -138,7 +133,7 @@ io.on('connection', function (socket) {
       newGroupJoin.save();
       
   })
-  socket.on('getUpdateIsjoin',function(data){ // data = username
+  socket.on('getUpdateIsjoin',function(data){
       EmitGroupInfo(data,socket);
   })
   socket.on('disconnect', function () {
