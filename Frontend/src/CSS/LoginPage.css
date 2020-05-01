@@ -1,6 +1,6 @@
 .Login-Page {
   text-align: center;
-  background-color: #6f6f6f;
+  background-color: #404040;
   height: 100vh;
 }
 
@@ -11,16 +11,17 @@
   width: 450px;
   height: 40vh;
   border: #FFFFFF solid 2px;
-  background-color:#404040;
+  background-color:#ffb94d;
   margin-top: 20vh;
   display: inline-block;
   text-align: center;
-  color: #5137e2;
 }
 .enterText {
   font-family: "Comic Sans MS", cursive;
   margin-top: 10px;
   font-weight: 900;
+  color: #000000;
+
 }
 
 .blankAlert {
@@ -30,5 +31,6 @@
   color: #38f000;
   font-weight: 600;
 }
+
 
 
