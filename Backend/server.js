@@ -9,7 +9,7 @@ const JoinedGroupInfo = require('./models/groupjoinedinfo');
 const Message = require('./models/message');
 
 // DB ---------------------------------------------------------------------------
-mongoose.connect('mongodb://heroku_zc4mlqgb:2ct3dvil75tcolpffo6jaipvmi@ds047335.mlab.com:47335/heroku_zc4mlqgb',{ useNewUrlParser: true });
+mongoose.connect('',{ useNewUrlParser: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => { console.log('DB connected!')});
